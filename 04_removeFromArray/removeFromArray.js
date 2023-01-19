@@ -10,6 +10,7 @@
 //     Scroll down to the bit about `Array.from` or the spread operator. 
 //     - [Or this link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
 
+// ORIGINAL TRY WORKED FOR 2 ARGS ----------------------
 // const removeFromArray = function(arr, arg) {
 //     let len = arr.length;
 //     let newArr = [];
@@ -22,23 +23,25 @@
 //         }
 //     }
 //     return newArr;
-// };
+// }; 
+// -----------------------------------------------------
+// forEach() method calls a function for each element in an array.
+
+// Example
+// let sum = 0;
+// const numbers = [65, 44, 12, 4];
+// numbers.forEach(item => sum += item)
+// -----------------------------------------------------
 
 
-const removeFromArray = function (arr, ...theArgs) {
-    let len = arr.length;
-    let argLen = arguments.length;
-    let newArr = [];
-
-    for (let i = 0; i < len; i++) {
-        for (let j = 0; j < argLen; j++) {
-            if (arr[i] != theArgs[j]) {
-                newArr.push(arr[j]);
-            } else {
-                continue;
-            }
+const removeFromArray = function (...args) {
+    const array = args[0];
+    const newArr = [];
+    array.forEach((item) => {
+        if (!args.includes(item)) {
+            newArr.push(item);
         }
-    }
+    });
     return newArr;
 };
 
